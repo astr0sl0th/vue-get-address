@@ -4,7 +4,8 @@
       <h3>Find Demo</h3>
       <Find
         apiKey=""
-        @address-as-string="addressAsString"
+        @address-data="addressData"
+        :sort="true"
       />
     </div>
   </div>
@@ -17,7 +18,7 @@ export default {
   name: 'App',
   components: { Find },
   methods: {
-    addressAsString(e) {
+    addressData(e) {
       console.log(e);
     },
   },

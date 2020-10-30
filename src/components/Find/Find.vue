@@ -16,7 +16,7 @@
         class="find__list__item"
         v-on:click="$emit('address-data', addressData)"
       >
-        {{ address }}
+        {{ address.replaceAll(',', ' ') }}
       </li>
     </ul>
   </div>
