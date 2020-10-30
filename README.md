@@ -13,13 +13,13 @@ getAddress() allows you to lookup an address via a U.K postcode which is useful 
 
 ### Props
 
-| Name               | Default              | Options                  | Required | Type    |
-| ------------------ | -------------------- | ------------------------ | -------- | ------- |
-| apiKey             | ''                   | Your getAddress() key    | Yes      | string  |
-| expand             | false                | true/false               | No       | boolean |
-| lookupType         | postcode             | poscode, withHouseNumber | No       | string  |
-| placeholder        | Enter your postcode. | N/A                      | No       | string  |
-| @address-as-string | Full address         | function                 | No       | emitter |
+| Name          | Default              | Options                  | Required | Type    |
+| ------------- | -------------------- | ------------------------ | -------- | ------- |
+| apiKey        | ''                   | Your getAddress() key    | Yes      | string  |
+| expand        | false                | true/false               | No       | boolean |
+| lookupType    | postcode             | poscode, withHouseNumber | No       | string  |
+| placeholder   | Enter your postcode. | N/A                      | No       | string  |
+| @address-data | Full response        | function                 | No       | emitter |
 
 #### Example
 
