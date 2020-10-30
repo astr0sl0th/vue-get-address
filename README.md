@@ -4,10 +4,10 @@ getAddress() allows you to lookup an address via a U.K postcode which is useful 
 
 ## Support
 
-- [Find](https://getaddress.io/Documentation#addresses)
-- [Autocomplete](https://getaddress.io/Documentation#addresses)
-- [Typeahead](https://getaddress.io/Documentation#addresses)
-- [Distance](https://getaddress.io/Documentation#addresses)
+- [Find](https://getaddress.io/Documentation#addresses) ✅
+- [Autocomplete](https://getaddress.io/Documentation#addresses) 🔧
+- [Typeahead](https://getaddress.io/Documentation#addresses) 🔧
+- [Distance](https://getaddress.io/Documentation#addresses) 🔧
 
 ## Find
 
