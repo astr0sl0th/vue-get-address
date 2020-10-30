@@ -14,7 +14,7 @@
         v-for="(address, index) of addresses"
         :key="index"
         class="find__list__item"
-        v-on:click="$emit('address-as-string', address)"
+        v-on:click="$emit('address-data', addressData)"
       >
         {{ address }}
       </li>
@@ -82,7 +82,6 @@
 
 <script>
 import debounce from 'debounce';
-import { removeDuplicateCommas } from '../../utils';
 
 export default {
   name: 'Find',
@@ -91,7 +90,7 @@ export default {
       postcode: '',
       houseNumber: null,
       addresses: [],
-      formattedAddresses: [],
+      addressData: [],
       errorMessage: '',
     };
   },
@@ -100,17 +99,21 @@ export default {
       type: String,
       required: true,
     },
-    lookupType: {
-      type: String,
-      default: 'postcode',
+    format: {
+      type: Boolean,
+      default: false,
+    },
+    sort: {
+      type: Boolean,
+      default: false,
     },
     expand: {
       type: Boolean,
       default: false,
     },
-    debounce: {
-      type: Number,
-      default: 300,
+    fuzzy: {
+      type: Boolean,
+      default: Boolean,
     },
     placeholder: {
       type: String,
@@ -130,17 +133,25 @@ export default {
       if (this.postcode === '') {
         this.errorMessage = '';
         this.addresses = [];
+        this.addressData = [];
         return;
       }
       try {
+        const params = new URLSearchParams({
+          format: this.format,
+          sort: this.sort,
+          expand: this.expand,
+          fuzzy: this.fuzzy,
+        }).toString();
         const request = await fetch(
-          `https://api.getAddress.io/find/${this.postcode}?api-key=${this.apiKey}`
+          `https://api.getAddress.io/find/${this.postcode}?api-key=${this.apiKey}&${params}`
         );
         switch (request.status) {
           case 200: {
-            const { addresses } = await request.json();
+            const response = await request.json();
             this.errorMessage = '';
-            this.addresses = removeDuplicateCommas(addresses);
+            this.addresses = response.addresses;
+            this.addressData = response;
             return;
           }
           case 404: {
