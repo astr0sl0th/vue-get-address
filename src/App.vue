@@ -1,26 +1,49 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="getaddress">
+    <div class="demoComponent">
+      <h3>Find Demo</h3>
+      <Find
+        apiKey=""
+        @address-as-string="addressAsString"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Find from './components/Find/Find';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  components: { Find },
+  methods: {
+    addressAsString(e) {
+      console.log(e);
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  /* Soft reset */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+.getaddress {
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+.demoComponent {
+  margin-bottom: 30px;
+}
+.demoComponent > h3 {
+  margin-bottom: 15px;
 }
 </style>

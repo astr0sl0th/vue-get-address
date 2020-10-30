@@ -1,24 +1,28 @@
 # vue-get-address
 
-## Project setup
-```
-yarn install
-```
+getAddress() allows you to lookup an address via a U.K postcode which is useful if you need to prepopulate address fields on your site.
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## Support
 
-### Compiles and minifies for production
-```
-yarn build
-```
+- [Find](https://getaddress.io/Documentation#addresses)
+- [Autocomplete](https://getaddress.io/Documentation#addresses)
+- [Typeahead](https://getaddress.io/Documentation#addresses)
+- [Distance](https://getaddress.io/Documentation#addresses)
 
-### Lints and fixes files
-```
-yarn lint
-```
+## Find
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Props
+
+| Name               | Default              | Options                  | Required | Type    |
+| ------------------ | -------------------- | ------------------------ | -------- | ------- |
+| apiKey             | ''                   | Your getAddress() key    | Yes      | string  |
+| expand             | false                | true/false               | No       | boolean |
+| lookupType         | postcode             | poscode, withHouseNumber | No       | string  |
+| placeholder        | Enter your postcode. | N/A                      | No       | string  |
+| @address-as-string | Full address         | function                 | No       | emitter |
+
+#### Example
+
+```html
+<Find :apiKey="'{your-key-here}'" />
+```
