@@ -139,16 +139,12 @@ export default {
       }
       try {
         const request = await fetch(
-          buildUrl(
-            `https://api.getAddress.io/find/${this.postcode}`,
-            this.apiKey,
-            {
-              format: this.format,
-              sort: this.sort,
-              expand: this.expand,
-              fuzzy: this.fuzzy,
-            }
-          )
+          buildUrl(`/find/${this.postcode}`, this.apiKey, {
+            format: this.format,
+            sort: this.sort,
+            expand: this.expand,
+            fuzzy: this.fuzzy,
+          })
         );
 
         switch (request.status) {
