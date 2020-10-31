@@ -16,7 +16,7 @@
         class="find__list__item"
         v-on:click="$emit('address-data', addressData)"
       >
-        {{ address.replaceAll(',', ' ') }}
+        {{ address }}
       </li>
     </ul>
   </div>
@@ -82,6 +82,7 @@
 
 <script>
 import debounce from 'debounce';
+import { buildUrl } from '../../utils';
 
 export default {
   name: 'Find',
@@ -137,20 +138,26 @@ export default {
         return;
       }
       try {
-        const params = new URLSearchParams({
-          format: this.format,
-          sort: this.sort,
-          expand: this.expand,
-          fuzzy: this.fuzzy,
-        }).toString();
         const request = await fetch(
-          `https://api.getAddress.io/find/${this.postcode}?api-key=${this.apiKey}&${params}`
+          buildUrl(
+            `https://api.getAddress.io/find/${this.postcode}`,
+            this.apiKey,
+            {
+              format: this.format,
+              sort: this.sort,
+              expand: this.expand,
+              fuzzy: this.fuzzy,
+            }
+          )
         );
+
         switch (request.status) {
           case 200: {
             const response = await request.json();
             this.errorMessage = '';
-            this.addresses = response.addresses;
+            this.addresses = response.addresses.map((address) =>
+              address.replaceAll(',', ' ')
+            );
             this.addressData = response;
             return;
           }
