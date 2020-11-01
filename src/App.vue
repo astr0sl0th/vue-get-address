@@ -43,6 +43,7 @@ export default {
 }
 .demoComponent {
   margin-bottom: 30px;
+  width: 100%;
 }
 .demoComponent > h3 {
   margin-bottom: 15px;
